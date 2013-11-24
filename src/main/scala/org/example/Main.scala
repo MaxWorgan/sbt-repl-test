@@ -13,7 +13,7 @@ final class Main extends xsbti.AppMain {
   def initialState(conf: xsbti.AppConfiguration) =
     State(
       conf,
-      Seq(hello, helloAll, changeColor, BasicCommands.help, BasicCommands.shell, BasicCommands.exit),
+      Seq(hello, helloAll, changeColor, BasicCommands.help, BasicCommands.shell, BasicCommands.nop),
       Set.empty,
       None,
       Seq(if (conf.arguments.nonEmpty) conf.arguments.mkString(" ") else Hello, "shell"),
