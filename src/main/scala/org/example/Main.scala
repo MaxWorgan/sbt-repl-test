@@ -16,7 +16,7 @@ final class Main extends xsbti.AppMain {
       Seq(hello, helloAll, changeColor, BasicCommands.help, BasicCommands.shell, BasicCommands.exit),
       Set.empty,
       None,
-      Seq("shell", "help"),
+      Seq(if (conf.arguments.nonEmpty) conf.arguments.mkString(" ") else Hello, "shell"),
       State.newHistory,
       AttributeMap.empty,
       initialGlobalLogging,
@@ -25,7 +25,7 @@ final class Main extends xsbti.AppMain {
 
   val Hello = "hello"
   val hello = Command.command(Hello, "test command", "detail help info") { s ⇒
-    s.log.info("Hello! 123 13342")
+    s.log.info("Hello!")
     s
   }
 
@@ -40,7 +40,7 @@ final class Main extends xsbti.AppMain {
   lazy val select = token("fg" ^^^ "3" | "bg" ^^^ "4")
   lazy val setColor = (select ~ color) map { case (g, c) => "\033[" + g + c + "m"}
 
-  def changeColor = Command("color")(_ ⇒ change) { (state, ansicode) =>
+  def changeColor = Command("color", ("color", "коротко"), "длинно")(_ ⇒ change) { (state, ansicode) =>
     print(ansicode)
     state
   }
