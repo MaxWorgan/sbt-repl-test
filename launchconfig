@@ -3,7 +3,7 @@
 
 [app]
   org: org.example
-  name: hello_2.10
+  name: hello
   version: 0.1-SNAPSHOT
   class: org.example.Main
   components: xsbti

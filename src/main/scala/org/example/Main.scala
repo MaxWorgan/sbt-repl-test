@@ -46,5 +46,5 @@ final class Main extends xsbti.AppMain {
   }
 
   def initialGlobalLogging =
-    GlobalLogging.initial(MainLogging.globalDefault, File.createTempFile("hello", "log"), ConsoleLogger.systemOut)
+    GlobalLogging.initial(MainLogging.globalDefault(ConsoleOut.systemOut), File.createTempFile("hello", "log"), ConsoleOut.systemOut)
 }
